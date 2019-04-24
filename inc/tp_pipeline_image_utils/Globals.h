@@ -139,6 +139,10 @@ TPPixel makeColor(size_t index);
 //##################################################################################################
 void validateColor(tp_pipeline::Parameter& param, const TPPixel& color);
 
+//##################################################################################################
+//! Static initialization of this module, see TP_STATIC_INIT in dependencies.pri
+int staticInit();
+
 }
 
 #endif

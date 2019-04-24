@@ -60,6 +60,19 @@ void _fixupParameters(tp_pipeline::StepDetails* stepDetails)
   AreaMode_lt areaMode = areaModeFromString(stepDetails->parameterValue<std::string>(modeSID()));
 
   {
+    tp_utils::StringID name = originModeSID();
+    auto param = tpGetMapValue(parameters, name);
+    param.name = name;
+    param.description = "How to calculate the x,y coords of the rect.";
+    param.setEnum(ExtractRectStepDelegate::originModeStrings());
+    param.enabled = areaMode==AreaMode_lt::Rect;
+    stepDetails->setParamerter(param);
+    validParams.push_back(name);
+  }
+
+  auto originMode = ExtractRectStepDelegate::originModeFromString(stepDetails->parameterValue<std::string>(originModeSID()));
+
+  {
     tp_utils::StringID name = colorImageSID();
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
@@ -104,7 +117,7 @@ void _fixupParameters(tp_pipeline::StepDetails* stepDetails)
     param.min = size_t(0);
     param.max = size_t(10000);
     param.validateBounds<size_t>(0);
-    param.enabled = areaMode==AreaMode_lt::Rect;
+    param.enabled = areaMode==AreaMode_lt::Rect && originMode==ExtractRectStepDelegate::OriginMode::XY;
     stepDetails->setParamerter(param);
     validParams.push_back(name);
   }
@@ -118,7 +131,7 @@ void _fixupParameters(tp_pipeline::StepDetails* stepDetails)
     param.min = size_t(0);
     param.max = size_t(10000);
     param.validateBounds<size_t>(0);
-    param.enabled = areaMode==AreaMode_lt::Rect;
+    param.enabled = areaMode==AreaMode_lt::Rect && originMode==ExtractRectStepDelegate::OriginMode::XY;
     stepDetails->setParamerter(param);
     validParams.push_back(name);
   }
@@ -169,7 +182,8 @@ void ExtractRectStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
   size_t x      = stepDetails->parameterValue<size_t>(                xSID());
   size_t y      = stepDetails->parameterValue<size_t>(                ySID());
 
-  AreaMode_lt areaMode = areaModeFromString(stepDetails->parameterValue<std::string>(modeSID()));
+  AreaMode_lt areaMode = areaModeFromString(stepDetails->parameterValue<std::string>(modeSID()));  
+  auto originMode = originModeFromString(stepDetails->parameterValue<std::string>(originModeSID()));
 
   std::string clippingAreaName = stepDetails->parameterValue<std::string>(clippingAreaSID());
   std::string clippingGridName = stepDetails->parameterValue<std::string>(clippingGridSID());
@@ -260,6 +274,14 @@ void ExtractRectStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
     {
       if(width>0 && height>0)
       {
+        if(originMode==OriginMode::CenterCrop)
+        {
+          if(src->data.width()>width)
+            x = (src->data.width()-width) / 2;
+          if(src->data.height()>height)
+            x = (src->data.height()-height) / 2;
+        }
+
         auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
         output.addMember(outMember);
         outMember->data = tp_image_utils_functions::ExtractRect::extractRect(src->data,

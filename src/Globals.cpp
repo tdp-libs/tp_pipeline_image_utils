@@ -144,6 +144,7 @@ TDP_DEFINE_ID(                            ySID,                                "
 //##################################################################################################
 void createStepDelegates(tp_pipeline::StepDelegateMap& stepDelegates, const tp_data::CollectionFactory* collectionFactory)
 {
+  TP_UNUSED(collectionFactory);
   stepDelegates.addStepDelegate(new LoadFilesStepDelegate          );
   stepDelegates.addStepDelegate(new EdgeDetectStepDelegate         );
   stepDelegates.addStepDelegate(new SignedDistanceFieldStepDelegate);
@@ -222,6 +223,14 @@ void validateColor(tp_pipeline::Parameter& param, const TPPixel& color)
     param.value = color.toString();
   else
     param.value = TPPixel(tpGetVariantValue<std::string>(param.value)).toString();
+}
+
+REGISTER_CREATE_STEP_DELEGATES;
+
+//##################################################################################################
+int staticInit()
+{
+  return 0;
 }
 
 }
