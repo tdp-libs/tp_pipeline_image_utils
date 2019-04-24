@@ -22,6 +22,25 @@ public:
 
   //################################################################################################
   void fixupParameters(tp_pipeline::StepDetails* stepDetails) const override;
+
+  //################################################################################################
+  enum class OriginMode
+  {
+    XY,
+    CenterCrop
+  };
+
+  //################################################################################################
+  static const std::vector<std::string>& originModeStrings();
+
+  //################################################################################################
+  static OriginMode originModeFromString(const std::string& originMode);
+
+  //################################################################################################
+  static std::string originModeToString(OriginMode originMode);
+
+  //################################################################################################
+  static tp_pipeline::StepDetails* makeStepDetails(OriginMode originMode, size_t width, size_t height);
 };
 
 }
