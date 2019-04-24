@@ -42,10 +42,16 @@ public:
 
   //################################################################################################
   //! This generate the step details for a scale step
-  static tp_pipeline::StepDetails* makeStepDetails(size_t width, size_t height);
+  static tp_pipeline::StepDetails* makeStepDetails(const std::string& inName,
+                                                   const std::string& outName,
+                                                   size_t width,
+                                                   size_t height);
 
   //################################################################################################
-  static tp_pipeline::StepDetails* makeStepDetails(SizeCalculation sizeCalculation, size_t size);
+  static tp_pipeline::StepDetails* makeStepDetails(const std::string& inName,
+                                                   const std::string& outName,
+                                                   SizeCalculation sizeCalculation,
+                                                   size_t size);
 
 private:
   struct Private;

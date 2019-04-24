@@ -42,6 +42,8 @@ AreaMode_lt areaModeFromString(const std::string& mode)
 //##################################################################################################
 void _fixupParameters(tp_pipeline::StepDetails* stepDetails)
 {
+  stepDetails->setOutputNames({"Output data"});
+
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();
 
@@ -247,7 +249,7 @@ void ExtractRectStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
     {
       if(clippingArea && !clippingArea->data.empty())
       {
-        auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+        auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
         output.addMember(outMember);
         outMember->data = tp_image_utils_functions::ExtractRect::extractRect(src->data,
                                                                              clippingArea->data.at(0),
@@ -261,7 +263,7 @@ void ExtractRectStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
     {
       if(clippingGrid)
       {
-        auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+        auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
         output.addMember(outMember);
         outMember->data = tp_image_utils_functions::ExtractRect::extractRect(src->data,
                                                                              clippingGrid->data,
@@ -282,7 +284,7 @@ void ExtractRectStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
             x = (src->data.height()-height) / 2;
         }
 
-        auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+        auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
         output.addMember(outMember);
         outMember->data = tp_image_utils_functions::ExtractRect::extractRect(src->data,
                                                                              x,
@@ -335,10 +337,16 @@ std::string ExtractRectStepDelegate::originModeToString(ExtractRectStepDelegate:
 }
 
 //##################################################################################################
-tp_pipeline::StepDetails* ExtractRectStepDelegate::makeStepDetails(ExtractRectStepDelegate::OriginMode originMode, size_t width, size_t height)
+tp_pipeline::StepDetails* ExtractRectStepDelegate::makeStepDetails(const std::string& inName,
+                                                                   const std::string& outName,
+                                                                   ExtractRectStepDelegate::OriginMode originMode,
+                                                                   size_t width,
+                                                                   size_t height)
 {
   auto stepDetails = new tp_pipeline::StepDetails(scaleSID());
   _fixupParameters(stepDetails);
+  stepDetails->setParameterValue(colorImageSID(), inName);
+  stepDetails->setOutputMapping({{"Output data", outName}});
   stepDetails->setParameterValue(originModeSID(), originModeToString(originMode));
   stepDetails->setParameterValue( destinationWidthSID(), width );
   stepDetails->setParameterValue(destinationHeightSID(), height);

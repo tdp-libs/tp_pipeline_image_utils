@@ -13,6 +13,54 @@
 namespace tp_pipeline_image_utils
 {
 
+namespace
+{
+//##################################################################################################
+void _fixupParameters(tp_pipeline::StepDetails* stepDetails)
+{
+  stepDetails->setOutputNames({"Output data"});
+
+  std::vector<tp_utils::StringID> validParams;
+  const auto& parameters = stepDetails->parameters();
+
+  {
+    tp_utils::StringID name = colorImageSID();
+    auto param = tpGetMapValue(parameters, name);
+    param.name = name;
+    param.description = "The source image to convert to mono.";
+    param.type = tp_pipeline::namedDataSID();
+
+    stepDetails->setParamerter(param);
+    validParams.push_back(name);
+  }
+
+  {
+    tp_utils::StringID name = channelModeSID();
+    auto param = tpGetMapValue(parameters, name);
+    param.name = name;
+    param.description = "Select how channels are stored in memory.";
+    param.setEnum(tp_image_utils_functions::channelModes());
+
+    stepDetails->setParamerter(param);
+    validParams.push_back(name);
+  }
+
+  {
+    tp_utils::StringID name = channelOrderSID();
+    auto param = tpGetMapValue(parameters, name);
+    param.name = name;
+    param.description = "Select how channels are ordered in memory.";
+    param.setEnum(tp_image_utils_functions::channelOrders());
+
+    stepDetails->setParamerter(param);
+    validParams.push_back(name);
+  }
+
+  stepDetails->setParametersOrder(validParams);
+  stepDetails->setValidParameters(validParams);
+}
+}
+
 //##################################################################################################
 ToFloatStepDelegate::ToFloatStepDelegate():
   AbstractStepDelegate(toFloatSID(), {conversionSID()})
@@ -66,46 +114,22 @@ void ToFloatStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 //##################################################################################################
 void ToFloatStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output data"});
+  _fixupParameters(stepDetails);
+}
 
-  std::vector<tp_utils::StringID> validParams;
-  const auto& parameters = stepDetails->parameters();
-
-  {
-    tp_utils::StringID name = colorImageSID();
-    auto param = tpGetMapValue(parameters, name);
-    param.name = name;
-    param.description = "The source image to convert to mono.";
-    param.type = tp_pipeline::namedDataSID();
-
-    stepDetails->setParamerter(param);
-    validParams.push_back(name);
-  }
-
-  {
-    tp_utils::StringID name = channelModeSID();
-    auto param = tpGetMapValue(parameters, name);
-    param.name = name;
-    param.description = "Select how channels are stored in memory.";
-    param.setEnum(tp_image_utils_functions::channelModes());
-
-    stepDetails->setParamerter(param);
-    validParams.push_back(name);
-  }
-
-  {
-    tp_utils::StringID name = channelOrderSID();
-    auto param = tpGetMapValue(parameters, name);
-    param.name = name;
-    param.description = "Select how channels are ordered in memory.";
-    param.setEnum(tp_image_utils_functions::channelOrders());
-
-    stepDetails->setParamerter(param);
-    validParams.push_back(name);
-  }
-
-  stepDetails->setParametersOrder(validParams);
-  stepDetails->setValidParameters(validParams);
+//################################################################################################
+tp_pipeline::StepDetails* ToFloatStepDelegate::makeStepDetails(const std::string& inName,
+                                                               const std::string& outName,
+                                                               tp_image_utils_functions::ChannelMode channelMode,
+                                                               tp_image_utils_functions::ChannelOrder channelOrder)
+{
+  auto stepDetails = new tp_pipeline::StepDetails(toFloatSID());
+  _fixupParameters(stepDetails);
+  stepDetails->setParameterValue(colorImageSID(), inName);
+  stepDetails->setOutputMapping({{"Output data", outName}});
+  stepDetails->setParameterValue(channelModeSID(), tp_image_utils_functions::channelModeToString(channelMode));
+  stepDetails->setParameterValue(channelOrderSID(), tp_image_utils_functions::channelOrderToString(channelOrder));
+  return stepDetails;
 }
 
 }

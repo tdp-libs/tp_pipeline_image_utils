@@ -72,7 +72,7 @@ std::pair<size_t,size_t> calculateSize(ScaleStepDelegate::SizeCalculation sizeCa
 //##################################################################################################
 void _fixupParameters(tp_pipeline::StepDetails* stepDetails)
 {
-  stepDetails->setOutputNames({"Output color image", "Output byte map"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();
@@ -194,7 +194,7 @@ void ScaleStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
     input.memberCast(colorImageName, src);
     if(src)
     {
-      auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output color image"));
+      auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
       output.addMember(outMember);
       std::pair<size_t, size_t> calculatedSize = calculateSize(sizeCalculation, size, width, height, src->data.width(), src->data.height());
       outMember->data = tp_image_utils::scale(src->data, calculatedSize.first, calculatedSize.second);
@@ -211,7 +211,7 @@ void ScaleStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
     input.memberCast(byteMapName, src);
     if(src)
     {
-      auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output byte map"));
+      auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
       output.addMember(outMember);
       std::pair<size_t, size_t> calculatedSize = calculateSize(sizeCalculation, size, width, height, src->data.width(), src->data.height());
       outMember->data = tp_image_utils::scale(src->data, calculatedSize.first, calculatedSize.second);
@@ -264,10 +264,15 @@ std::string ScaleStepDelegate::sizeCalculationToString(ScaleStepDelegate::SizeCa
 }
 
 //##################################################################################################
-tp_pipeline::StepDetails* ScaleStepDelegate::makeStepDetails(size_t width, size_t height)
+tp_pipeline::StepDetails* ScaleStepDelegate::makeStepDetails(const std::string& inName,
+                                                             const std::string& outName,
+                                                             size_t width,
+                                                             size_t height)
 {
   auto stepDetails = new tp_pipeline::StepDetails(scaleSID());
-  _fixupParameters(stepDetails);
+  _fixupParameters(stepDetails);  
+  stepDetails->setParameterValue(colorImageSID(), inName);
+  stepDetails->setOutputMapping({{"Output data", outName}});
   stepDetails->setParameterValue(sizeCalculationSID(), sizeCalculationToString(ScaleStepDelegate::SizeCalculation::UseWidthHeight));
   stepDetails->setParameterValue( destinationWidthSID(), width );
   stepDetails->setParameterValue(destinationHeightSID(), height);
@@ -275,10 +280,15 @@ tp_pipeline::StepDetails* ScaleStepDelegate::makeStepDetails(size_t width, size_
 }
 
 //##################################################################################################
-tp_pipeline::StepDetails* ScaleStepDelegate::makeStepDetails(ScaleStepDelegate::SizeCalculation sizeCalculation, size_t size)
+tp_pipeline::StepDetails* ScaleStepDelegate::makeStepDetails(const std::string& inName,
+                                                             const std::string& outName,
+                                                             ScaleStepDelegate::SizeCalculation sizeCalculation,
+                                                             size_t size)
 {
   auto stepDetails = new tp_pipeline::StepDetails(scaleSID());
   _fixupParameters(stepDetails);
+  stepDetails->setParameterValue(colorImageSID(), inName);
+  stepDetails->setOutputMapping({{"Output data", outName}});
   stepDetails->setParameterValue(sizeCalculationSID(), sizeCalculationToString(sizeCalculation));
   stepDetails->setParameterValue(destinationSizeSID(), size);
   return stepDetails;

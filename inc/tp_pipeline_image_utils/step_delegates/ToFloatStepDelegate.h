@@ -5,6 +5,8 @@
 
 #include "tp_pipeline/AbstractStepDelegate.h"
 
+#include "tp_image_utils_functions/ToFloat.h"
+
 namespace tp_pipeline_image_utils
 {
 
@@ -22,6 +24,12 @@ public:
 
   //################################################################################################
   void fixupParameters(tp_pipeline::StepDetails* stepDetails) const override;
+
+  //################################################################################################
+  static tp_pipeline::StepDetails* makeStepDetails(const std::string& inName,
+                                                   const std::string& outName,
+                                                   tp_image_utils_functions::ChannelMode channelMode,
+                                                   tp_image_utils_functions::ChannelOrder channelOrder);
 };
 
 }

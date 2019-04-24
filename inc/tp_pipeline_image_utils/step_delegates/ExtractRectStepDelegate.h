@@ -40,7 +40,11 @@ public:
   static std::string originModeToString(OriginMode originMode);
 
   //################################################################################################
-  static tp_pipeline::StepDetails* makeStepDetails(OriginMode originMode, size_t width, size_t height);
+  static tp_pipeline::StepDetails* makeStepDetails(const std::string& inName,
+                                                   const std::string& outName,
+                                                   OriginMode originMode,
+                                                   size_t width,
+                                                   size_t height);
 };
 
 }
