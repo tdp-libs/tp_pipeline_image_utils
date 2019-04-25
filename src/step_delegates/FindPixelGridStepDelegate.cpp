@@ -37,13 +37,13 @@ void FindPixelGridStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetail
   {
     if(src2)
     {
-      auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+      auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
       output.addMember(outMember);
       outMember->data = tp_image_utils_functions::FindPixelGrid::findPixelGrid(src->data, src2->data);
     }
     else
     {
-      auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+      auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
       output.addMember(outMember);
       outMember->data = tp_image_utils_functions::FindPixelGrid::findPixelGrid(src->data);
     }

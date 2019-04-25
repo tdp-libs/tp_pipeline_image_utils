@@ -36,14 +36,14 @@ void ToMonoStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 
   auto processColor = [&](const tp_data_image_utils::ColorMapMember* src)
   {
-    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(outMember);
     outMember->data = tp_image_utils::toMono(src->data, colorThreshold);
   };
 
   auto processGray = [&](const tp_data_image_utils::ByteMapMember* src)
   {
-    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(outMember);
     outMember->data = tp_image_utils::toMono(src->data, uint8_t(monoThreshold));
   };
@@ -92,7 +92,7 @@ void ToMonoStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 //##################################################################################################
 void ToMonoStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output image"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();

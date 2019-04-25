@@ -93,7 +93,7 @@ void DeNoiseStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 
   auto processGray = [&](const tp_image_utils::ByteMap& src)
   {
-    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(outMember);
 
     if(mode==Mode_lt::BlackStripeRemoval)
@@ -174,7 +174,7 @@ void DeNoiseStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 //##################################################################################################
 void DeNoiseStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output image"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();

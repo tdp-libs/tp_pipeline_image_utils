@@ -37,7 +37,7 @@ void ConvolutionMatrixStepDelegate::executeStep(tp_pipeline::StepDetails* stepDe
     if(!byteMapMember)
       continue;
 
-    auto newByteMapMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+    auto newByteMapMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(newByteMapMember);
     newByteMapMember->data = matrix.convolve(byteMapMember->data);
   }

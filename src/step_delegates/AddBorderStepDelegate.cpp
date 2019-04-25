@@ -44,14 +44,14 @@ void AddBorderStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 
     if(auto byteMapMember = dynamic_cast<tp_data_image_utils::ByteMapMember*>(member); byteMapMember)
     {
-      auto newByteMapMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+      auto newByteMapMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
       output.addMember(newByteMapMember);
       newByteMapMember->data = tp_image_utils_functions::addBorder(byteMapMember->data, width, value);
     }
 
     else if(auto colorMapMember = dynamic_cast<tp_data_image_utils::ColorMapMember*>(member); colorMapMember)
     {
-      auto newColorMapMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+      auto newColorMapMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
       output.addMember(newColorMapMember);
       newColorMapMember->data = tp_image_utils_functions::addBorder(colorMapMember->data, width, color);
     }

@@ -43,7 +43,7 @@ void SignedDistanceFieldStepDelegate::executeStep(tp_pipeline::StepDetails* step
     if(!byteMapMember)
       continue;
 
-    auto newByteMapMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+    auto newByteMapMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(newByteMapMember);
 
     if(width>0 && height>0)
@@ -56,7 +56,7 @@ void SignedDistanceFieldStepDelegate::executeStep(tp_pipeline::StepDetails* step
 //##################################################################################################
 void SignedDistanceFieldStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output image"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();

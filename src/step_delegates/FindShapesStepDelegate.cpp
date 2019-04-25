@@ -135,7 +135,7 @@ void FindShapesStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 //      //img = tp_image_utils::Point::drawPoints(img, distortedGrid, style);
 //    }
 
-//    //auto outMember = new ColorMapMember(stepDetails->lookupOutputName("Output image"));
+//    //auto outMember = new ColorMapMember(stepDetails->lookupOutputName("Output data"));
 //    //output.addMember(outMember);
 //    //outMember->data = img;
 //  }
@@ -168,7 +168,7 @@ void FindShapesStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 //##################################################################################################
 void FindShapesStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output image", "Output shapes", "Output grid", "Distorted grid"});
+  stepDetails->setOutputNames({"Output data", "Output shapes", "Output grid", "Distorted grid"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();

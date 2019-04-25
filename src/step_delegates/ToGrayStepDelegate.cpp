@@ -28,7 +28,7 @@ void ToGrayStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 
   auto processColor = [&](const tp_data_image_utils::ColorMapMember* src)
   {
-    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(outMember);
     outMember->data = tp_image_utils::toGray(src->data);
   };
@@ -62,7 +62,7 @@ void ToGrayStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 //##################################################################################################
 void ToGrayStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output image"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();

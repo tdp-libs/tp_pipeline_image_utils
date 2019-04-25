@@ -53,7 +53,7 @@ void EdgeDetectStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 
   auto processColor = [&](const tp_data_image_utils::ColorMapMember* src)
   {
-    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(outMember);
 
     if(mode == Mode_lt::Edge)
@@ -64,7 +64,7 @@ void EdgeDetectStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 
   auto processGray = [&](const tp_data_image_utils::ByteMapMember* src)
   {
-    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(outMember);
 
     if(mode == Mode_lt::Edge)
@@ -117,7 +117,7 @@ void EdgeDetectStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 //##################################################################################################
 void EdgeDetectStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output image"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();

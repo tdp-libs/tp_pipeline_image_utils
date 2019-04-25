@@ -58,13 +58,13 @@ void PixelManipulationStepDelegate::executeStep(tp_pipeline::StepDetails* stepDe
   {
     if(outMode == OutMode_lt::Color)
     {
-      auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+      auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
       output.addMember(outMember);
       outMember->data = tp_image_utils_functions::pixelManipulationColor(src->data, params, errors);
     }
     else
     {
-      auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+      auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
       output.addMember(outMember);
       outMember->data = tp_image_utils_functions::pixelManipulationByte(src->data, params, errors);
     }
@@ -99,7 +99,7 @@ void PixelManipulationStepDelegate::executeStep(tp_pipeline::StepDetails* stepDe
 //##################################################################################################
 void PixelManipulationStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output image"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();

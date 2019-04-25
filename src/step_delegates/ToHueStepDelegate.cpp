@@ -38,14 +38,14 @@ void ToHueStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
     {
       if(auto color = dynamic_cast<tp_data_image_utils::ColorMapMember*>(member); color)
       {
-        auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+        auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
         output.addMember(outMember);
         outMember->data = tp_image_utils_functions::toHue(color->data);
       }
 
       else if(auto gray = dynamic_cast<tp_data_image_utils::ByteMapMember*>(member); gray)
       {
-        auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+        auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
         output.addMember(outMember);
         outMember->data = tp_image_utils_functions::toHue(gray->data);
       }
@@ -63,7 +63,7 @@ void ToHueStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
     {
       if(auto color = dynamic_cast<tp_data_image_utils::ColorMapMember*>(member); color)
       {
-        auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+        auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
         output.addMember(outMember);
         outMember->data = tp_image_utils_functions::toHueGray(color->data);
       }

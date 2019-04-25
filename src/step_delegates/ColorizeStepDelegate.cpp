@@ -32,7 +32,7 @@ void ColorizeStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
   size_t w = src->data.width();
   size_t h = src->data.height();
 
-  auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+  auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
   output.addMember(outMember);
   outMember->data.setSize(w, h);
 
@@ -47,7 +47,7 @@ void ColorizeStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 //##################################################################################################
 void ColorizeStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output image"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();

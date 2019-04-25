@@ -45,7 +45,7 @@ void SlotFillStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
   input.memberCast(monoName, src);
   if(src)
   {
-    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(outMember);
     outMember->data = tp_image_utils_functions::slotFill(src->data, params);
   }
@@ -54,7 +54,7 @@ void SlotFillStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 //##################################################################################################
 void SlotFillStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output image"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();

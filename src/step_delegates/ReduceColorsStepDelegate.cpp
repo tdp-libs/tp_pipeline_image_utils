@@ -39,7 +39,7 @@ void ReduceColorsStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails
     if(!byteMapMember)
       continue;
 
-    auto newByteMapMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+    auto newByteMapMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(newByteMapMember);
     newByteMapMember->data = tp_image_utils_functions::reduceColors(byteMapMember->data, paletteSize);
   }

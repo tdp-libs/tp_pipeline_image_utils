@@ -41,7 +41,7 @@ void NoiseFieldStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
     if(!byteMapMember)
       continue;
 
-    auto newByteMapMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+    auto newByteMapMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(newByteMapMember);
     newByteMapMember->data = tp_image_utils_functions::noiseFieldGrid(byteMapMember->data, cellSize);
   }

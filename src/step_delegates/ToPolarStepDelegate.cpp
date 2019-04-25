@@ -31,7 +31,7 @@ void ToPolarStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 
   auto processGray = [&](const tp_data_image_utils::ByteMapMember* src)
   {
-    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(outMember);
     outMember->data = tp_image_utils_functions::toPolar(src->data, w, h);
   };
@@ -65,7 +65,7 @@ void ToPolarStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 //##################################################################################################
 void ToPolarStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output image"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();

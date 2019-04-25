@@ -17,7 +17,7 @@ namespace
 //##################################################################################################
 void _fixupParameters(tp_pipeline::StepDetails* stepDetails)
 {
-  stepDetails->setOutputNames({"Output image"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();
@@ -84,7 +84,7 @@ void LoadFilesStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
                                         const tp_pipeline::StepInput& inputs,
                                         tp_data::Collection& output) const
 {
-  auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+  auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
   output.addMember(outMember);
 
   tp_data_image_utils::ColorMapMember* inMember{nullptr};

@@ -45,7 +45,7 @@ void NormalizeBrightnessStepDelegate::executeStep(tp_pipeline::StepDetails* step
       if(!colorMapMember)
         continue;
 
-      auto newColorMapMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+      auto newColorMapMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
       output.addMember(newColorMapMember);
       newColorMapMember->data = colorMapMember->data;
       tp_image_utils_functions::shiftBrightness(newColorMapMember->data, mode, uint8_t(shiftValue));
@@ -64,7 +64,7 @@ void NormalizeBrightnessStepDelegate::executeStep(tp_pipeline::StepDetails* step
       if(!colorMapMember)
         continue;
 
-      auto newColorMapMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+      auto newColorMapMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
       output.addMember(newColorMapMember);
       newColorMapMember->data = colorMapMember->data;
       tp_image_utils_functions::normalizeBrightness(newColorMapMember->data, paletteSize, mode, exaggeration);

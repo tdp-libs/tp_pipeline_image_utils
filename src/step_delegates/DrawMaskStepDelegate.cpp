@@ -37,7 +37,7 @@ void DrawMaskStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
   input.memberCast( maskName,  mask);
   if(image && mask)
   {
-    auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output image"));
+    auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(outMember);
     outMember->data = image->data;
     tp_image_utils_functions::drawMask(outMember->data, color, mask->data, value);
@@ -47,7 +47,7 @@ void DrawMaskStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 //##################################################################################################
 void DrawMaskStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output image"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();

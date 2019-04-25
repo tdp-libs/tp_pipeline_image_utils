@@ -41,7 +41,7 @@ void BitwiseStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 
   if(p&&q)
   {
-    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(outMember);
     outMember->data = tp_image_utils_functions::bitwise(p->data, q->data, operation);
   }
@@ -54,7 +54,7 @@ void BitwiseStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 //##################################################################################################
 void BitwiseStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output image"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();

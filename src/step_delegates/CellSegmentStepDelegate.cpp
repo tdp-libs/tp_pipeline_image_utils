@@ -60,7 +60,7 @@ void CellSegmentStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
   input.memberCast(monoName, src);
   if(src)
   {
-    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output image"));
+    auto outMember = new tp_data_image_utils::ByteMapMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(outMember);
     if(initialCoordMode == "Simple")
       outMember->data = tp_image_utils_functions::cellSegmentSimple(src->data, params);
@@ -74,7 +74,7 @@ void CellSegmentStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 //##################################################################################################
 void CellSegmentStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails) const
 {
-  stepDetails->setOutputNames({"Output image"});
+  stepDetails->setOutputNames({"Output data"});
 
   std::vector<tp_utils::StringID> validParams;
   const auto& parameters = stepDetails->parameters();
