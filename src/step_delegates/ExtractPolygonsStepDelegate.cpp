@@ -1,7 +1,7 @@
 #include "tp_pipeline_image_utils/step_delegates/ExtractPolygonsStepDelegate.h"
 #include "tp_data_image_utils/members/ByteMapMember.h"
 
-#include "tp_pipeline_math_utils/members/PolygonsMember.h"
+#include "tp_data_math_utils/members/PolygonsMember.h"
 
 #include "tp_image_utils_functions/ExtractPolygons.h"
 
@@ -35,7 +35,7 @@ void ExtractPolygonsStepDelegate::executeStep(tp_pipeline::StepDetails* stepDeta
   input.memberCast(grayName, src);
   if(src)
   {
-    auto outMember = new tp_pipeline_math_utils::PolygonsMember(stepDetails->lookupOutputName("Output polygon"));
+    auto outMember = new tp_data_math_utils::PolygonsMember(stepDetails->lookupOutputName("Output polygon"));
     output.addMember(outMember);
     tp_image_utils_functions::ExtractPolygon::simplePolygonExtraction(src->data, outMember->data);
   }

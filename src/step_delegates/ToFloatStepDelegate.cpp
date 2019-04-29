@@ -1,7 +1,7 @@
 #include "tp_pipeline_image_utils/step_delegates/ToFloatStepDelegate.h"
 #include "tp_data_image_utils/members/ColorMapMember.h"
 
-#include "tp_pipeline_math_utils/members/FloatsMember.h"
+#include "tp_data_math_utils/members/FloatsMember.h"
 
 #include "tp_pipeline/StepDetails.h"
 #include "tp_pipeline/StepInput.h"
@@ -80,7 +80,7 @@ void ToFloatStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
 
   auto processColor = [&](const tp_data_image_utils::ColorMapMember* src)
   {
-    auto outMember = new tp_pipeline_math_utils::FloatsMember(stepDetails->lookupOutputName("Output data"));
+    auto outMember = new tp_data_math_utils::FloatsMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(outMember);
     tp_image_utils_functions::toFloat(src->data, channelMode, channelOrder, outMember->data);
   };
