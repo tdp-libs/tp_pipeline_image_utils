@@ -7,6 +7,7 @@
 #include "tp_pipeline/StepInput.h"
 
 #include "tp_data/Collection.h"
+#include "tp_utils/DebugUtils.h"
 
 namespace tp_pipeline_image_utils
 {

@@ -10,6 +10,10 @@
 
 #include "tp_image_utils_functions/ToFloat.h"
 
+#warning remove
+#include "tp_image_utils/SaveImages.h"
+#include "tp_utils/DebugUtils.h"
+
 namespace tp_pipeline_image_utils
 {
 
@@ -82,7 +86,14 @@ void ToFloatStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
   {
     auto outMember = new tp_data_math_utils::FloatsMember(stepDetails->lookupOutputName("Output data"));
     output.addMember(outMember);
-    tp_image_utils_functions::toFloat(src->data, channelMode, channelOrder, outMember->data);
+
+
+    tp_image_utils_functions::toFloat(src->data,
+                                      tp_image_utils_functions::ChannelMode::Separate,
+                                      tp_image_utils_functions::ChannelOrder::RGB,
+                                      outMember->data);
+
+    //tp_image_utils_functions::toFloat(src->data, channelMode, channelOrder, outMember->data);
   };
 
   if(!colorName.empty())
@@ -91,7 +102,10 @@ void ToFloatStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
     input.memberCast(colorName, src);
 
     if(src)
+    {
+      tp_image_utils::saveImage("/home/tom/Desktop/src.png", src->data);
       processColor(src);
+    }
     else
       output.addError("Failed to find source color image.");
   }
@@ -106,7 +120,10 @@ void ToFloatStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
     for(const auto& member : input.previousSteps.back()->members())
     {
       if(auto color = dynamic_cast<tp_data_image_utils::ColorMapMember*>(member); color)
+      {
+        tp_image_utils::saveImage("/home/tom/Desktop/out.png", color->data);
         processColor(color);
+      }
     }
   }
 }

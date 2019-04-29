@@ -281,7 +281,7 @@ void ExtractRectStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
           if(src->data.width()>width)
             x = (src->data.width()-width) / 2;
           if(src->data.height()>height)
-            x = (src->data.height()-height) / 2;
+            y = (src->data.height()-height) / 2;
         }
 
         auto outMember = new tp_data_image_utils::ColorMapMember(stepDetails->lookupOutputName("Output data"));
@@ -343,7 +343,7 @@ tp_pipeline::StepDetails* ExtractRectStepDelegate::makeStepDetails(const std::st
                                                                    size_t width,
                                                                    size_t height)
 {
-  auto stepDetails = new tp_pipeline::StepDetails(scaleSID());
+  auto stepDetails = new tp_pipeline::StepDetails(extractRectSID());
   _fixupParameters(stepDetails);
   stepDetails->setParameterValue(colorImageSID(), inName);
   stepDetails->setOutputMapping({{"Output data", outName}});
