@@ -23,8 +23,6 @@ struct Parameter;
 //! Pipeline step delegates for processing images using tp_image_utils
 namespace tp_pipeline_image_utils
 {
-TDP_DECLARE_ID(                     colorMapSID,                        "Color map")
-TDP_DECLARE_ID(                      byteMapSID,                         "Byte map")
 TDP_DECLARE_ID(                    loadFilesSID,                       "Load files")
 TDP_DECLARE_ID(                    saveFilesSID,                       "Save files")
 TDP_DECLARE_ID(                   edgeDetectSID,                      "Edge detect")

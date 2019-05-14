@@ -35,8 +35,6 @@
 //##################################################################################################
 namespace tp_pipeline_image_utils
 {
-TDP_DEFINE_ID(                     colorMapSID,                        "Color map")
-TDP_DEFINE_ID(                      byteMapSID,                         "Byte map")
 TDP_DEFINE_ID(                    loadFilesSID,                       "Load files")
 TDP_DEFINE_ID(                    saveFilesSID,                       "Save files")
 TDP_DEFINE_ID(                   edgeDetectSID,                      "Edge detect")

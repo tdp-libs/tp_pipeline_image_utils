@@ -145,7 +145,7 @@ void _fixupParameters(tp_pipeline::StepDetails* stepDetails)
   }
 
   {
-    const tp_utils::StringID& name = byteMapSID();
+    const tp_utils::StringID& name = tp_data_image_utils::byteMapSID();
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The source byte map to scale.";
@@ -187,7 +187,7 @@ void ScaleStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
   auto sizeCalculation = sizeCalculationFromString(stepDetails->parameterValue<std::string>(sizeCalculationSID()));
 
   std::string colorImageName = stepDetails->parameterValue<std::string>(colorImageSID());
-  std::string    byteMapName = stepDetails->parameterValue<std::string>(byteMapSID());
+  std::string    byteMapName = stepDetails->parameterValue<std::string>(tp_data_image_utils::byteMapSID());
 
   if(!colorImageName.empty())
   {
