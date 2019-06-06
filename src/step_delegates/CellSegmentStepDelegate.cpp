@@ -101,7 +101,7 @@ void CellSegmentStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDeta
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The source mono image.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     stepDetails->setParamerter(param);
     validParams.push_back(name);
@@ -216,7 +216,7 @@ void CellSegmentStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDeta
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The labels image.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     param.enabled = (initialCoordMode == InitialCoordMode_lt::SignedDistanceField);
 

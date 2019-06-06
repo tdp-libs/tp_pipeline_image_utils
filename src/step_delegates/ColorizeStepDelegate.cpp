@@ -57,7 +57,7 @@ void ColorizeStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The source gray image.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     stepDetails->setParamerter(param);
     validParams.push_back(name);

@@ -79,7 +79,7 @@ void _fixupParameters(tp_pipeline::StepDetails* stepDetails)
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The source image to cut the shape from.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
     stepDetails->setParamerter(param);
     validParams.push_back(name);
   }
@@ -143,7 +143,7 @@ void _fixupParameters(tp_pipeline::StepDetails* stepDetails)
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The shape to cut out.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
     param.enabled = areaMode==AreaMode_lt::Area;
     stepDetails->setParamerter(param);
     validParams.push_back(name);

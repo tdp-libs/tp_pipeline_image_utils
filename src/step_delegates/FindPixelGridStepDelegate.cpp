@@ -61,7 +61,7 @@ void FindPixelGridStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDe
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The byte map to extract the pixel grid from, if this is blank the first byte map will be used.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     stepDetails->setParamerter(param);
     validParams.push_back(name);
@@ -72,7 +72,7 @@ void FindPixelGridStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDe
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The source image to pixelate, if this is blank the grid source will be used.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     stepDetails->setParamerter(param);
     validParams.push_back(name);

@@ -167,7 +167,7 @@ void EdgeDetectStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetai
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The source image to edge detect.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     stepDetails->setParamerter(param);
     validParams.push_back(name);
@@ -178,7 +178,7 @@ void EdgeDetectStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetai
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The source image to edge detect.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     stepDetails->setParamerter(param);
     validParams.push_back(name);

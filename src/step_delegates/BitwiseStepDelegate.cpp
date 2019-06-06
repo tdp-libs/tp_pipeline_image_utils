@@ -75,7 +75,7 @@ void BitwiseStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails)
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The P input image.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     stepDetails->setParamerter(param);
     validParams.push_back(name);
@@ -86,7 +86,7 @@ void BitwiseStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetails)
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The Q input image.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     stepDetails->setParamerter(param);
     validParams.push_back(name);

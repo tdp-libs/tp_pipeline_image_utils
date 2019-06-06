@@ -138,7 +138,7 @@ void _fixupParameters(tp_pipeline::StepDetails* stepDetails)
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The source image to scale.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     stepDetails->setParamerter(param);
     validParams.push_back(name);
@@ -149,7 +149,7 @@ void _fixupParameters(tp_pipeline::StepDetails* stepDetails)
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The source byte map to scale.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
     stepDetails->setParamerter(param);
     validParams.push_back(name);
   }

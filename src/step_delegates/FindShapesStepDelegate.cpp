@@ -178,7 +178,7 @@ void FindShapesStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetai
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The binary image to search for shapes.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     stepDetails->setParamerter(param);
     validParams.push_back(name);

@@ -82,7 +82,7 @@ void DrawShapesStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetai
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The color image to draw over.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     stepDetails->setParamerter(param);
     validParams.push_back(name);
@@ -93,7 +93,7 @@ void DrawShapesStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetai
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "A named set of lines to draw.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     stepDetails->setParamerter(param);
     validParams.push_back(name);
@@ -104,7 +104,7 @@ void DrawShapesStepDelegate::fixupParameters(tp_pipeline::StepDetails* stepDetai
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "A named grid to draw.";
-    param.type = tp_pipeline::namedDataSID();
+    param.setNamedData();
 
     stepDetails->setParamerter(param);
     validParams.push_back(name);
