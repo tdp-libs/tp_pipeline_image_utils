@@ -12,7 +12,7 @@
 
 #include "tp_utils/DebugUtils.h"
 
-#include <math.h>
+#include <cmath>
 
 namespace tp_pipeline_image_utils
 {
