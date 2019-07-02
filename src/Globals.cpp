@@ -138,6 +138,7 @@ TDP_DEFINE_ID(                    calcAlphaSID,                       "Calc alph
 TDP_DEFINE_ID(                     calcByteSID,                        "Calc byte")
 TDP_DEFINE_ID(                            xSID,                                "X")
 TDP_DEFINE_ID(                            ySID,                                "Y")
+TDP_DEFINE_ID(                       kernelSID,                           "Kernel")
 
 //##################################################################################################
 void createStepDelegates(tp_pipeline::StepDelegateMap& stepDelegates, const tp_data::CollectionFactory* collectionFactory)

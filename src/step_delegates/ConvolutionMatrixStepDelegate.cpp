@@ -23,7 +23,7 @@ void ConvolutionMatrixStepDelegate::executeStep(tp_pipeline::StepDetails* stepDe
                                                 const tp_pipeline::StepInput& input,
                                                 tp_data::Collection& output) const
 {
-  tp_image_utils_functions::ConvolutionMatrix matrix(stepDetails->parameterValue<std::string>("Matrix"));
+  tp_image_utils_functions::ConvolutionMatrix matrix(stepDetails->parameterValue<std::string>(kernelSID()));
 
   if(input.previousSteps.empty())
   {
@@ -50,7 +50,7 @@ void ConvolutionMatrixStepDelegate::fixupParameters(tp_pipeline::StepDetails* st
   const auto& parameters = stepDetails->parameters();
 
   {
-    tp_utils::StringID name = "Matrix";
+    const auto& name = kernelSID();
     auto param = tpGetMapValue(parameters, name);
     param.name = name;
     param.description = "The matrix parameters to use for the convolution.";

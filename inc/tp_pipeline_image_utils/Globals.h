@@ -126,6 +126,7 @@ TDP_DECLARE_ID(                    calcAlphaSID,                       "Calc alp
 TDP_DECLARE_ID(                     calcByteSID,                        "Calc byte")
 TDP_DECLARE_ID(                            xSID,                                "X")
 TDP_DECLARE_ID(                            ySID,                                "Y")
+TDP_DECLARE_ID(                       kernelSID,                           "Kernel")
 
 //##################################################################################################
 //! Add the step delegates that this module provides to the StepDelegateMap
