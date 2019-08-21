@@ -232,7 +232,7 @@ void ExtractRectStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
     if(width<1)
     {
       if(clippingGrid && clippingGrid->data.xCells>0)
-        width = size_t(float(clippingGrid->data.xCells) * ceil(clippingGrid->data.xAxis.length()));
+        width = size_t(float(clippingGrid->data.xCells) * std::ceil(clippingGrid->data.xAxis.length()));
       else
         width = size_t(src->data.width());
     }
@@ -240,7 +240,7 @@ void ExtractRectStepDelegate::executeStep(tp_pipeline::StepDetails* stepDetails,
     if(height<1)
     {
       if(clippingGrid && clippingGrid->data.yCells>0)
-        height = size_t(float(clippingGrid->data.yCells) * ceil(clippingGrid->data.yAxis.length()));
+        height = size_t(float(clippingGrid->data.yCells) * std::ceil(clippingGrid->data.yAxis.length()));
       else
         height = size_t(src->data.height());
     }
