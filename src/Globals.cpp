@@ -35,110 +35,110 @@
 //##################################################################################################
 namespace tp_pipeline_image_utils
 {
-TDP_DEFINE_ID(                    loadFilesSID,                       "Load files")
-TDP_DEFINE_ID(                    saveFilesSID,                       "Save files")
-TDP_DEFINE_ID(                   edgeDetectSID,                      "Edge detect")
-TDP_DEFINE_ID(          signedDistanceFieldSID,            "Signed distance field")
-TDP_DEFINE_ID(                       toGraySID,                          "To gray")
-TDP_DEFINE_ID(                      toFloatSID,                         "To float")
-TDP_DEFINE_ID(                        toHueSID,                           "To hue")
-TDP_DEFINE_ID(                       toMonoSID,                          "To mono")
-TDP_DEFINE_ID(                      deNoiseSID,                         "De noise")
-TDP_DEFINE_ID(                        scaleSID,                            "Scale")
-TDP_DEFINE_ID(                   noiseFieldSID,                      "Noise field")
-TDP_DEFINE_ID(                 reduceColorsSID,                    "Reduce colors")
-TDP_DEFINE_ID(                findPixelGridSID,                  "Find pixel grid")
-TDP_DEFINE_ID(          normalizeBrightnessSID,             "Normalize brightness")
-TDP_DEFINE_ID(                  extractRectSID,                     "Extract rect")
-TDP_DEFINE_ID(              extractPolygonsSID,                 "Extract polygons")
-TDP_DEFINE_ID(                   findShapesSID,                      "Find shapes")
-TDP_DEFINE_ID(                     finalizeSID,                         "Finalize")
-TDP_DEFINE_ID(                    addBorderSID,                       "Add border")
-TDP_DEFINE_ID(                      bitwiseSID,                          "Bitwise")
-TDP_DEFINE_ID(                   colorImageSID,                      "Color image")
-TDP_DEFINE_ID(                    monoImageSID,                       "Mono image")
-TDP_DEFINE_ID(                    grayImageSID,                       "Gray image")
-TDP_DEFINE_ID(                     functionSID,                         "Function")
-TDP_DEFINE_ID(             destinationWidthSID,                "Destination width")
-TDP_DEFINE_ID(            destinationHeightSID,               "Destination height")
-TDP_DEFINE_ID(              destinationSizeSID,                 "Destination size")
-TDP_DEFINE_ID(              sizeCalculationSID,                 "Size calculation")
-TDP_DEFINE_ID(                   originModeSID,                      "Origin mode")
-TDP_DEFINE_ID(                  cellSegmentSID,                     "Cell segment")
-TDP_DEFINE_ID(                minimumRadiusSID,                   "Minimum radius")
-TDP_DEFINE_ID(          distanceFieldRadiusSID,            "Distance field radius")
-TDP_DEFINE_ID(          maximumInitialCellsSID,            "Maximum initial cells")
-TDP_DEFINE_ID(              growCellsPassesSID,                "Grow cells passes")
-TDP_DEFINE_ID(                     colorizeSID,                         "Colorize")
-TDP_DEFINE_ID(                     slotFillSID,                        "Slot fill")
-TDP_DEFINE_ID(                        solidSID,                            "Solid")
-TDP_DEFINE_ID(                         slotSID,                             "Slot")
-TDP_DEFINE_ID(                   startAngleSID,                      "Start angle")
-TDP_DEFINE_ID(                     maxAngleSID,                        "Max angle")
-TDP_DEFINE_ID(                    stepAngleSID,                       "Step angle")
-TDP_DEFINE_ID(                  labelsImageSID,                     "Labels image")
-TDP_DEFINE_ID(                         maskSID,                             "Mask")
-TDP_DEFINE_ID(                        colorSID,                            "Color")
-TDP_DEFINE_ID(                        valueSID,                            "Value")
-TDP_DEFINE_ID(                     drawMaskSID,                        "Draw mask")
-TDP_DEFINE_ID(                     growModeSID,                        "Grow mode")
-TDP_DEFINE_ID(               minAspectRatioSID,                 "Min aspect ratio")
-TDP_DEFINE_ID(               maxAspectRatioSID,                 "Max aspect ratio")
-TDP_DEFINE_ID(                   minDensitySID,                      "Min density")
-TDP_DEFINE_ID(                   maxDensitySID,                      "Max density")
-TDP_DEFINE_ID(                      minSizeSID,                         "Min size")
-TDP_DEFINE_ID(                      maxSizeSID,                         "Max size")
-TDP_DEFINE_ID(               noiseThresholdSID,                  "Noise threshold")
-TDP_DEFINE_ID(             initialCoordModeSID,               "Initial coord mode")
-TDP_DEFINE_ID(                         modeSID,                             "Mode")
-TDP_DEFINE_ID(                   cornerModeSID,                      "Corner mode")
-TDP_DEFINE_ID(              parametersOrderSID,                 "Parameters order")
-TDP_DEFINE_ID(                 knobletWidthSID,                    "Knoblet width")
-TDP_DEFINE_ID(                   endMinEachSID,                     "End min each")
-TDP_DEFINE_ID(                 endMinEitherSID,                   "End min either")
-TDP_DEFINE_ID(                    endMinSumSID,                      "End min sum")
-TDP_DEFINE_ID(                borderMinEachSID,                  "Border min each")
-TDP_DEFINE_ID(              borderMinEitherSID,                "Border min either")
-TDP_DEFINE_ID(                 borderMinSumSID,                   "Border min sum")
-TDP_DEFINE_ID(                   drawShapesSID,                      "Draw shapes")
-TDP_DEFINE_ID(                    minPointsSID,                       "Min points")
-TDP_DEFINE_ID(                 maxDeviationSID,                    "Max deviation")
-TDP_DEFINE_ID(             maxJointDistanceSID,               "Max joint distance")
-TDP_DEFINE_ID(                    shapeTypeSID,                       "Shape type")
-TDP_DEFINE_ID(               angleDeviationSID,                  "Angle deviation")
-TDP_DEFINE_ID(                       sourceSID,                           "Source")
-TDP_DEFINE_ID(               drawDebugImageSID,                 "Draw debug image")
-TDP_DEFINE_ID(                  loadAndSaveSID,                    "Load and save")
-TDP_DEFINE_ID(                   conversionSID,                       "Conversion")
-TDP_DEFINE_ID(                   processingSID,                       "Processing")
-TDP_DEFINE_ID(                      drawingSID,                          "Drawing")
-TDP_DEFINE_ID(               findAndSegmentSID,                 "Find and segment")
-TDP_DEFINE_ID(                      toPolarSID,                         "To polar")
-TDP_DEFINE_ID(                        widthSID,                            "Width")
-TDP_DEFINE_ID(                       heightSID,                           "Height")
-TDP_DEFINE_ID(                       radiusSID,                           "Radius")
-TDP_DEFINE_ID(                  needleImageSID,                     "Needle image")
-TDP_DEFINE_ID(                 externalNameSID,                    "External name")
-TDP_DEFINE_ID(              fillConcaveHullSID,                "Fill concave hull")
-TDP_DEFINE_ID(               colorThresholdSID,                  "Color threshold")
-TDP_DEFINE_ID(                grayThresholdSID,                   "Gray threshold")
-TDP_DEFINE_ID(                monoThresholdSID,                   "Mono threshold")
-TDP_DEFINE_ID(                   gridSourceSID,                      "Grid source")
-TDP_DEFINE_ID(                 clippingAreaSID,                    "Clipping area")
-TDP_DEFINE_ID(                 clippingGridSID,                    "Clipping grid")
-TDP_DEFINE_ID(                        linesSID,                            "Lines")
-TDP_DEFINE_ID(                         gridSID,                             "Grid")
-TDP_DEFINE_ID(                  channelModeSID,                     "Channel mode")
-TDP_DEFINE_ID(                 channelOrderSID,                    "Channel order")
-TDP_DEFINE_ID(            pixelManipulationSID,               "Pixel manipulation")
-TDP_DEFINE_ID(                      calcRedSID,                         "Calc red")
-TDP_DEFINE_ID(                    calcGreenSID,                       "Calc green")
-TDP_DEFINE_ID(                     calcBlueSID,                        "Calc blue")
-TDP_DEFINE_ID(                    calcAlphaSID,                       "Calc alpha")
-TDP_DEFINE_ID(                     calcByteSID,                        "Calc byte")
-TDP_DEFINE_ID(                            xSID,                                "X")
-TDP_DEFINE_ID(                            ySID,                                "Y")
-TDP_DEFINE_ID(                       kernelSID,                           "Kernel")
+TDP_DEFINE_ID(                    loadFilesSID,                       "Load files");
+TDP_DEFINE_ID(                    saveFilesSID,                       "Save files");
+TDP_DEFINE_ID(                   edgeDetectSID,                      "Edge detect");
+TDP_DEFINE_ID(          signedDistanceFieldSID,            "Signed distance field");
+TDP_DEFINE_ID(                       toGraySID,                          "To gray");
+TDP_DEFINE_ID(                      toFloatSID,                         "To float");
+TDP_DEFINE_ID(                        toHueSID,                           "To hue");
+TDP_DEFINE_ID(                       toMonoSID,                          "To mono");
+TDP_DEFINE_ID(                      deNoiseSID,                         "De noise");
+TDP_DEFINE_ID(                        scaleSID,                            "Scale");
+TDP_DEFINE_ID(                   noiseFieldSID,                      "Noise field");
+TDP_DEFINE_ID(                 reduceColorsSID,                    "Reduce colors");
+TDP_DEFINE_ID(                findPixelGridSID,                  "Find pixel grid");
+TDP_DEFINE_ID(          normalizeBrightnessSID,             "Normalize brightness");
+TDP_DEFINE_ID(                  extractRectSID,                     "Extract rect");
+TDP_DEFINE_ID(              extractPolygonsSID,                 "Extract polygons");
+TDP_DEFINE_ID(                   findShapesSID,                      "Find shapes");
+TDP_DEFINE_ID(                     finalizeSID,                         "Finalize");
+TDP_DEFINE_ID(                    addBorderSID,                       "Add border");
+TDP_DEFINE_ID(                      bitwiseSID,                          "Bitwise");
+TDP_DEFINE_ID(                   colorImageSID,                      "Color image");
+TDP_DEFINE_ID(                    monoImageSID,                       "Mono image");
+TDP_DEFINE_ID(                    grayImageSID,                       "Gray image");
+TDP_DEFINE_ID(                     functionSID,                         "Function");
+TDP_DEFINE_ID(             destinationWidthSID,                "Destination width");
+TDP_DEFINE_ID(            destinationHeightSID,               "Destination height");
+TDP_DEFINE_ID(              destinationSizeSID,                 "Destination size");
+TDP_DEFINE_ID(              sizeCalculationSID,                 "Size calculation");
+TDP_DEFINE_ID(                   originModeSID,                      "Origin mode");
+TDP_DEFINE_ID(                  cellSegmentSID,                     "Cell segment");
+TDP_DEFINE_ID(                minimumRadiusSID,                   "Minimum radius");
+TDP_DEFINE_ID(          distanceFieldRadiusSID,            "Distance field radius");
+TDP_DEFINE_ID(          maximumInitialCellsSID,            "Maximum initial cells");
+TDP_DEFINE_ID(              growCellsPassesSID,                "Grow cells passes");
+TDP_DEFINE_ID(                     colorizeSID,                         "Colorize");
+TDP_DEFINE_ID(                     slotFillSID,                        "Slot fill");
+TDP_DEFINE_ID(                        solidSID,                            "Solid");
+TDP_DEFINE_ID(                         slotSID,                             "Slot");
+TDP_DEFINE_ID(                   startAngleSID,                      "Start angle");
+TDP_DEFINE_ID(                     maxAngleSID,                        "Max angle");
+TDP_DEFINE_ID(                    stepAngleSID,                       "Step angle");
+TDP_DEFINE_ID(                  labelsImageSID,                     "Labels image");
+TDP_DEFINE_ID(                         maskSID,                             "Mask");
+TDP_DEFINE_ID(                        colorSID,                            "Color");
+TDP_DEFINE_ID(                        valueSID,                            "Value");
+TDP_DEFINE_ID(                     drawMaskSID,                        "Draw mask");
+TDP_DEFINE_ID(                     growModeSID,                        "Grow mode");
+TDP_DEFINE_ID(               minAspectRatioSID,                 "Min aspect ratio");
+TDP_DEFINE_ID(               maxAspectRatioSID,                 "Max aspect ratio");
+TDP_DEFINE_ID(                   minDensitySID,                      "Min density");
+TDP_DEFINE_ID(                   maxDensitySID,                      "Max density");
+TDP_DEFINE_ID(                      minSizeSID,                         "Min size");
+TDP_DEFINE_ID(                      maxSizeSID,                         "Max size");
+TDP_DEFINE_ID(               noiseThresholdSID,                  "Noise threshold");
+TDP_DEFINE_ID(             initialCoordModeSID,               "Initial coord mode");
+TDP_DEFINE_ID(                         modeSID,                             "Mode");
+TDP_DEFINE_ID(                   cornerModeSID,                      "Corner mode");
+TDP_DEFINE_ID(              parametersOrderSID,                 "Parameters order");
+TDP_DEFINE_ID(                 knobletWidthSID,                    "Knoblet width");
+TDP_DEFINE_ID(                   endMinEachSID,                     "End min each");
+TDP_DEFINE_ID(                 endMinEitherSID,                   "End min either");
+TDP_DEFINE_ID(                    endMinSumSID,                      "End min sum");
+TDP_DEFINE_ID(                borderMinEachSID,                  "Border min each");
+TDP_DEFINE_ID(              borderMinEitherSID,                "Border min either");
+TDP_DEFINE_ID(                 borderMinSumSID,                   "Border min sum");
+TDP_DEFINE_ID(                   drawShapesSID,                      "Draw shapes");
+TDP_DEFINE_ID(                    minPointsSID,                       "Min points");
+TDP_DEFINE_ID(                 maxDeviationSID,                    "Max deviation");
+TDP_DEFINE_ID(             maxJointDistanceSID,               "Max joint distance");
+TDP_DEFINE_ID(                    shapeTypeSID,                       "Shape type");
+TDP_DEFINE_ID(               angleDeviationSID,                  "Angle deviation");
+TDP_DEFINE_ID(                       sourceSID,                           "Source");
+TDP_DEFINE_ID(               drawDebugImageSID,                 "Draw debug image");
+TDP_DEFINE_ID(                  loadAndSaveSID,                    "Load and save");
+TDP_DEFINE_ID(                   conversionSID,                       "Conversion");
+TDP_DEFINE_ID(                   processingSID,                       "Processing");
+TDP_DEFINE_ID(                      drawingSID,                          "Drawing");
+TDP_DEFINE_ID(               findAndSegmentSID,                 "Find and segment");
+TDP_DEFINE_ID(                      toPolarSID,                         "To polar");
+TDP_DEFINE_ID(                        widthSID,                            "Width");
+TDP_DEFINE_ID(                       heightSID,                           "Height");
+TDP_DEFINE_ID(                       radiusSID,                           "Radius");
+TDP_DEFINE_ID(                  needleImageSID,                     "Needle image");
+TDP_DEFINE_ID(                 externalNameSID,                    "External name");
+TDP_DEFINE_ID(              fillConcaveHullSID,                "Fill concave hull");
+TDP_DEFINE_ID(               colorThresholdSID,                  "Color threshold");
+TDP_DEFINE_ID(                grayThresholdSID,                   "Gray threshold");
+TDP_DEFINE_ID(                monoThresholdSID,                   "Mono threshold");
+TDP_DEFINE_ID(                   gridSourceSID,                      "Grid source");
+TDP_DEFINE_ID(                 clippingAreaSID,                    "Clipping area");
+TDP_DEFINE_ID(                 clippingGridSID,                    "Clipping grid");
+TDP_DEFINE_ID(                        linesSID,                            "Lines");
+TDP_DEFINE_ID(                         gridSID,                             "Grid");
+TDP_DEFINE_ID(                  channelModeSID,                     "Channel mode");
+TDP_DEFINE_ID(                 channelOrderSID,                    "Channel order");
+TDP_DEFINE_ID(            pixelManipulationSID,               "Pixel manipulation");
+TDP_DEFINE_ID(                      calcRedSID,                         "Calc red");
+TDP_DEFINE_ID(                    calcGreenSID,                       "Calc green");
+TDP_DEFINE_ID(                     calcBlueSID,                        "Calc blue");
+TDP_DEFINE_ID(                    calcAlphaSID,                       "Calc alpha");
+TDP_DEFINE_ID(                     calcByteSID,                        "Calc byte");
+TDP_DEFINE_ID(                            xSID,                                "X");
+TDP_DEFINE_ID(                            ySID,                                "Y");
+TDP_DEFINE_ID(                       kernelSID,                           "Kernel");
 
 //##################################################################################################
 void createStepDelegates(tp_pipeline::StepDelegateMap& stepDelegates, const tp_data::CollectionFactory* collectionFactory)
