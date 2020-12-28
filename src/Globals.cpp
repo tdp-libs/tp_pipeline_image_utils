@@ -143,7 +143,6 @@ TP_DEFINE_ID(                       kernelSID,                           "Kernel
 //##################################################################################################
 void createStepDelegates(tp_pipeline::StepDelegateMap& stepDelegates, const tp_data::CollectionFactory* collectionFactory)
 {
-  TP_UNUSED(collectionFactory);
   stepDelegates.addStepDelegate(new LoadFilesStepDelegate          );
   stepDelegates.addStepDelegate(new EdgeDetectStepDelegate         );
   stepDelegates.addStepDelegate(new SignedDistanceFieldStepDelegate);
